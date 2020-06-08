@@ -134,3 +134,27 @@ def find_pair(player_hand, the_board):
 player_cards = ['J♦', '6♣']
 card_list = ['8♥', '8♣', '6♠', 'Q♥', '9♥']
 print(find_pair(player_cards, card_list))
+
+
+"""Finding Two Pair"""
+
+
+def find_two_pair(player_hand, the_board):
+    player_hand = suit_remover(player_hand)
+    the_board = suit_remover(the_board)
+    cards = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3', '2']
+    pair_list = []
+    for x in player_hand:
+        the_board.append(x)
+    for x in cards:
+        if the_board.count(x) == 2:
+            pair_list.append(x)
+    if len(pair_list) == 2:
+        return f"You got two pair: {pair_list[0]}s, and {pair_list[1]}s"
+    else:
+        return "You didn't get two pair anything!"
+
+
+player_cards = ['J♦', '6♣']
+card_list = ['8♥', '8♣', '6♠', 'Q♥', '9♥']
+print(find_two_pair(player_cards, card_list))
