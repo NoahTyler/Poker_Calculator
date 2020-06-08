@@ -158,3 +158,27 @@ def find_two_pair(player_hand, the_board):
 player_cards = ['J♦', '6♣']
 card_list = ['8♥', '8♣', '6♠', 'Q♥', '9♥']
 print(find_two_pair(player_cards, card_list))
+
+
+"""Finding Trips (Three of a kind)"""
+
+
+def find_three_of_a_kind(player_hand, the_board):
+    player_hand = suit_remover(player_hand)
+    the_board = suit_remover(the_board)
+    cards = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3', '2']
+    pair_list = []
+    for x in player_hand:
+        the_board.append(x)
+    for x in cards:
+        if the_board.count(x) == 3:
+            pair_list.append(x)
+    if len(pair_list) == 1:
+        return f"You got three of a kind with {pair_list[0]}s"
+    else:
+        return "You didn't get three of a kind!"
+
+
+player_cards = ['2♥', '8♦']
+card_list = ['8♥', '3♠', '9♦', '7♥', '4♠']
+print(find_three_of_a_kind(player_cards, card_list))
