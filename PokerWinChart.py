@@ -109,4 +109,28 @@ card_list = ['8♥', '8♣', '6♠', 'Q♥', '9♥']
 print(find_high_card(player_cards, card_list))
 
 
+"""Finding a Pair"""
 
+"""find_pair takes exactly two arguments, a players hand (a list of 2 cards) and the board (a list of up to 5 cards).
+It will go through all the cards and return the top card you paired with."""
+
+
+def find_pair(player_hand, the_board):
+    player_hand = suit_remover(player_hand)
+    the_board = suit_remover(the_board)
+    cards = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3', '2']
+    pair_list = []
+    for x in player_hand:
+        the_board.append(x)
+    for x in cards:
+        if the_board.count(x) == 2:
+            pair_list.append(x)
+    if len(pair_list) > 0:
+        return f"You paired {pair_list[0]}s"
+    else:
+        return "You didn't pair anything!"
+
+
+player_cards = ['J♦', '6♣']
+card_list = ['8♥', '8♣', '6♠', 'Q♥', '9♥']
+print(find_pair(player_cards, card_list))
